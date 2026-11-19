@@ -40,7 +40,13 @@ export default function ServiciosPage() {
                 .map((s) => {
                   const team = data.staff.filter((m) => m.serviceIds.includes(s.id));
                   return (
-                    <li key={s.id} className={cn("flex flex-wrap items-center gap-4 px-4 py-3.5", !s.active && "opacity-55")}>
+                    <li
+                      key={s.id}
+                      className={cn(
+                        "flex flex-col gap-3 px-4 py-3.5 sm:flex-row sm:items-center sm:gap-4",
+                        !s.active && "opacity-55",
+                      )}
+                    >
                       <button type="button" onClick={() => setEditing(s)} className="min-w-0 flex-1 text-left">
                         <p className="flex flex-wrap items-center gap-2 font-medium">
                           {s.name}
@@ -49,18 +55,22 @@ export default function ServiciosPage() {
                           )}
                           {!s.active && <Tag tone="warn">Pausado</Tag>}
                         </p>
-                        <p className="mt-0.5 truncate text-[13px] text-muted">{s.description}</p>
+                        <p className="mt-0.5 text-[13px] text-muted sm:truncate">{s.description}</p>
                       </button>
-                      <div className="flex -space-x-1.5" aria-label={`${team.length} profesionales`}>
-                        {team.map((m) => (
-                          <span key={m.id} className="rounded-full ring-2 ring-bg" title={m.name}>
-                            <Avatar name={m.name} color={m.color} size={24} />
-                          </span>
-                        ))}
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                        <div className="flex gap-1" aria-label={`${team.length} profesionales`}>
+                          {team.map((m) => (
+                            <span key={m.id} title={m.name}>
+                              <Avatar name={m.name} color={m.color} size={24} />
+                            </span>
+                          ))}
+                        </div>
+                        <span className="tabular ml-auto text-sm whitespace-nowrap text-muted sm:ml-0 sm:w-20 sm:text-right">
+                          {fmtDuration(s.durationMin)}
+                        </span>
+                        <span className="tabular text-sm font-medium whitespace-nowrap sm:w-24 sm:text-right">{fmtMoney(s.price)}</span>
+                        <Switch checked={s.active} onChange={() => toggle(s.id)} label={`${s.active ? "Pausar" : "Activar"} ${s.name}`} />
                       </div>
-                      <span className="tabular w-20 text-right text-sm text-muted">{fmtDuration(s.durationMin)}</span>
-                      <span className="tabular w-24 text-right text-sm font-medium">{fmtMoney(s.price)}</span>
-                      <Switch checked={s.active} onChange={() => toggle(s.id)} label={`${s.active ? "Pausar" : "Activar"} ${s.name}`} />
                     </li>
                   );
                 })}

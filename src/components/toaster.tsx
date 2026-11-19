@@ -41,7 +41,7 @@ export function Toaster() {
           )}
           <div className="min-w-0 flex-1">
             <p className="text-sm font-medium text-fg">{t.title}</p>
-            {t.body && <p className="mt-0.5 text-sm text-muted">{t.body}</p>}
+            {t.body && <p className="mt-0.5 text-sm [overflow-wrap:anywhere] text-muted">{t.body}</p>}
           </div>
           <button
             onClick={() => dismiss(t.id)}

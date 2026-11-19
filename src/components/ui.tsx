@@ -378,7 +378,7 @@ export function Tabs<T extends string>({
   className?: string;
 }) {
   return (
-    <div role="tablist" className={cn("inline-flex rounded-lg border border-line bg-surface p-0.5", className)}>
+    <div role="tablist" className={cn("inline-flex max-w-full overflow-x-auto rounded-lg border border-line bg-surface p-0.5", className)}>
       {items.map((it) => (
         <button
           key={it.value}
@@ -386,7 +386,7 @@ export function Tabs<T extends string>({
           aria-selected={value === it.value}
           onClick={() => onChange(it.value)}
           className={cn(
-            "inline-flex h-7 items-center gap-1.5 rounded-md px-3 text-[13px] font-medium transition-colors",
+            "inline-flex h-7 shrink-0 items-center gap-1.5 rounded-md px-2.5 text-[13px] font-medium transition-colors sm:px-3",
             value === it.value ? "bg-raised-hi text-fg" : "text-muted hover:text-fg",
           )}
         >

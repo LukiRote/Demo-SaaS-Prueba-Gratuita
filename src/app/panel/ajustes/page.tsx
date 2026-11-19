@@ -61,7 +61,7 @@ export default function AjustesPage() {
         <div className="min-w-0 space-y-6">
           <Panel>
             <PanelHeader title="Negocio" />
-            <form onSubmit={save} noValidate className="grid gap-4 px-4 py-4 sm:grid-cols-2">
+            <form onSubmit={save} noValidate className="grid grid-cols-1 gap-4 px-4 py-4 sm:grid-cols-2">
               <Field label="Nombre" htmlFor="b-name" error={error ?? undefined}>
                 <Input id="b-name" maxLength={40} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
               </Field>
@@ -75,7 +75,9 @@ export default function AjustesPage() {
                 <Input id="b-ig" maxLength={31} value={form.instagram} onChange={(e) => setForm({ ...form, instagram: e.target.value })} />
               </Field>
               <div className="flex items-center justify-between gap-3 sm:col-span-2">
-                <p className="tabular truncate text-[13px] text-subtle">Link: {bookUrl(b.slug)}</p>
+                <p className="tabular min-w-0 flex-1 truncate text-[13px] text-subtle" title={bookUrl(b.slug)}>
+                  Link: {bookUrl(b.slug)}
+                </p>
                 <Button type="submit" disabled={!dirty}>
                   Guardar
                 </Button>
