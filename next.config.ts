@@ -4,9 +4,10 @@ const isDev = process.env.NODE_ENV !== "production";
 
 /**
  * Content Security Policy.
- * La app no carga nada de terceros: fuentes auto-hospedadas por next/font, sin analytics
- * ni APIs externas. Next.js necesita 'unsafe-inline' para sus scripts de hidratación
- * en páginas estáticas (la alternativa con nonce obliga a renderizar todo en el servidor).
+ * La app no carga nada de terceros: fuentes auto-hospedadas por next/font y Vercel Web
+ * Analytics servido desde el mismo dominio (/_vercel/insights). Sin APIs externas.
+ * Next.js necesita 'unsafe-inline' para sus scripts de hidratación en páginas estáticas
+ * (la alternativa con nonce obliga a renderizar todo en el servidor).
  */
 const csp = [
   "default-src 'self'",

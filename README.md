@@ -21,6 +21,7 @@ El negocio de ejemplo es **Navaja Studio**, una barbería y estética ficticia d
 | Íconos | Lucide |
 | Tests | Vitest |
 | Deploy | Vercel (estático, sin variables de entorno obligatorias) |
+| Analítica | Vercel Web Analytics (script del mismo dominio, sin cookies, solo en producción) |
 
 ## Cómo correrlo
 

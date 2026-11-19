@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/toaster";
+import { VercelAnalytics } from "@/components/vercel-analytics";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="min-h-dvh">
         {children}
         <Toaster />
+        <VercelAnalytics />
       </body>
     </html>
   );

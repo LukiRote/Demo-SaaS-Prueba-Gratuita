@@ -11,6 +11,7 @@ La demo es pública y no tiene backend: todo corre en el navegador del visitante
 - **Entradas**: todas las entradas pasan por Zod con largo máximo, recorte de caracteres de control y normalización. Los celulares se normalizan a E.164 argentino.
 - **Salida**: nada se renderiza con `dangerouslySetInnerHTML`. Las plantillas de WhatsApp reemplazan solo variables de una lista blanca y se muestran como texto. Los links se construyen con `encodeURIComponent`, y el archivo `.ics` escapa cada campo.
 - **Datos**: el estado persistido se valida al cargar (versión y forma); si está corrupto o es viejo se descarta y se vuelve a sembrar. Si `localStorage` no está disponible, se usa memoria.
+- **Analítica**: Vercel Web Analytics, sin cookies y servido desde el mismo dominio. Solo cuenta visitas y páginas: nunca lee lo que el visitante carga en la demo.
 - **Privacidad**: los links de gestión y el panel llevan `noindex`. En clientes ficticios, WhatsApp se abre sin destinatario para no escribirle a números que podrían ser reales. Nunca se piden datos de tarjeta: la seña es simulada.
 - **Códigos de reserva**: 8 caracteres de un alfabeto de 31 (unos 40 bits) generados con `crypto.getRandomValues`.
 - **Límites**: tope de 25 reservas online por visitante por día, para no llenar el almacenamiento.
